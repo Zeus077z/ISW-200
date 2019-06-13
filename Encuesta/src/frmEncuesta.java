@@ -1,3 +1,6 @@
+
+import java.util.LinkedList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,15 +16,61 @@ public class frmEncuesta extends javax.swing.JFrame {
     /**
      * Creates new form frmEncuesta
      */
-    private Persona p;
-    private Trabajo t;
+   
+    private final Persona persona;
+    protected LinkedList<Persona> personas;
     
     public frmEncuesta() {
         initComponents();
         setLocationRelativeTo(null);
+        persona = new Persona();
+        personas = new LinkedList<>();
         
+        Trabajo t1 = new Trabajo();
+        t1.setGenero("F");
+        Trabajo.feme++;
+        t1.setHoras(8);
+        t1.setPersonasTrabajan(1);
+        t1.setRangoSalario(3);
+        Trabajo.femeT++;
+        personas.add(t1);
         
-       
+        Trabajo t2 = new Trabajo();
+        t1.setGenero("M");
+        Trabajo.mascu++;
+        t1.setHoras(25);
+        t1.setPersonasTrabajan(2);
+        t1.setRangoSalario(4);
+        Trabajo.mascuT++;
+        personas.add(t2);
+        
+        Trabajo t3 = new Trabajo();
+        t1.setGenero("F");
+        Trabajo.feme++;
+        t1.setHoras(14);
+        t1.setPersonasTrabajan(3);
+        t1.setRangoSalario(1);
+        Trabajo.femeT++;
+        personas.add(t3);
+
+        Trabajo t4 = new Trabajo();
+        t1.setGenero("M");
+        Trabajo.mascu++;
+        t1.setHoras(0);
+        t1.setPersonasNoTrabajan(1);
+        t1.setRangoSalario(0);
+        personas.add(t4);
+        
+        Trabajo t5 = new Trabajo();
+        t1.setGenero("F");
+        Trabajo.feme++;
+        t1.setHoras(0);
+        t1.setPersonasNoTrabajan(2);
+        t1.setRangoSalario(0);
+        personas.add(t5);
+        Persona.setCantPersonas(personas.size());
+
+   
     }
 
     /**
@@ -77,9 +126,19 @@ public class frmEncuesta extends javax.swing.JFrame {
 
         buttonGroup1.add(optFeme);
         optFeme.setText("Femenino");
+        optFeme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optFemeActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(optMascu);
         optMascu.setText("Masculino");
+        optMascu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optMascuActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(optSI);
         optSI.setText("SI");
@@ -98,7 +157,7 @@ public class frmEncuesta extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(optCuarto);
-        optCuarto.setText("₡200,000 ... +");
+        optCuarto.setText("₡200,000 ... O más");
         optCuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optCuartoActionPerformed(evt);
@@ -114,7 +173,7 @@ public class frmEncuesta extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(optPrimero);
-        optPrimero.setText("₡1 ............ ₡50,000");
+        optPrimero.setText("Menos de ₡50,000");
         optPrimero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optPrimeroActionPerformed(evt);
@@ -301,10 +360,51 @@ public class frmEncuesta extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        Persona p = new Persona();
+        Trabajo t = new Trabajo();
+        if(optSI.isSelected()){
+            if(optFeme.isSelected()){
+                t.setGenero("F");
+                Persona.feme++;
+                Persona.femeT++;
+            }else if(optMascu.isSelected()){
+                t.setGenero("M");
+                Persona.mascu++;
+                Persona.mascuT++;
+            }
+            t.setHoras((int) jSpinner1.getValue());
+            if(optPrimero.isSelected()){
+                t.setRangoSalario(1);
+            }else if(optSegundo.isSelected()){
+                t.setRangoSalario(2);
+            }else if(optTercero.isSelected()){
+                t.setRangoSalario(3);
+            }else if(optCuarto.isSelected()){
+                t.setRangoSalario(4);
+            }
+            Persona.PersonasTrabajan++;
+            personas.add(t);
+        }else if(optNO.isSelected()){
+            if(optFeme.isSelected()){
+                t.setGenero("F");
+                Persona.feme++;
+            }else if(optMascu.isSelected()){
+                t.setGenero("M"); 
+                Persona.mascu++;
+            }
+            Persona.PersonasNoTrabajan++;
+            personas.add(t);
+        }
+         Persona.setCantPersonas(personas.size());
+         System.out.println(t);
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         // TODO add your handling code here:
+        jdReporte ventanaRepor = new jdReporte(this,true);
+        ventanaRepor.pack();
+        ventanaRepor.setVisible(true);
     }//GEN-LAST:event_btnReporteActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -319,6 +419,14 @@ public class frmEncuesta extends javax.swing.JFrame {
         optTercero.setEnabled(true);
         optCuarto.setEnabled(true);
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void optFemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optFemeActionPerformed
+        // TODO add your handling code here:   
+    }//GEN-LAST:event_optFemeActionPerformed
+
+    private void optMascuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optMascuActionPerformed
+        // TODO add your handling code here:     
+    }//GEN-LAST:event_optMascuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,10 +456,8 @@ public class frmEncuesta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmEncuesta().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmEncuesta().setVisible(true);
         });
     }
 

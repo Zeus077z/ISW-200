@@ -6,20 +6,28 @@ import java.util.LinkedList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Daniel
  */
 public class Persona {
     protected String genero;
-    protected LinkedList<Persona> linkedlist;
+    public static int PersonasTrabajan;
+    public static int PersonasNoTrabajan;
+    protected static int CantPersonas;
+    protected static int feme;
+    protected static int mascu;
+    protected static int femeT;
+    protected static int mascuT;
 
-    public Persona(String genero, LinkedList<Persona> linkedlist) {
-        this.genero = genero;
-        this.linkedlist = linkedlist;
+    public static int getCantPersonas() {
+        return CantPersonas;
     }
 
+    public static void setCantPersonas(int CantPersonas) {
+        Persona.CantPersonas = CantPersonas;
+    }
+     
     public String getGenero() {
         return genero;
     }
@@ -28,13 +36,33 @@ public class Persona {
         this.genero = genero;
     }
 
-    public LinkedList<Persona> getLinkedlist() {
-        return linkedlist;
+    public int getPersonasTrabajan() {
+        return PersonasTrabajan;
     }
 
-    public void setLinkedlist(LinkedList<Persona> linkedlist) {
-        this.linkedlist = linkedlist;
+    public void setPersonasTrabajan(int PersonasTrabajan) {
+        this.PersonasTrabajan = PersonasTrabajan;
     }
+
+    public int getPersonasNoTrabajan() {
+        return PersonasNoTrabajan;
+    }
+
+    public void setPersonasNoTrabajan(int PersonasNoTrabajan) {
+        this.PersonasNoTrabajan = PersonasNoTrabajan;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Persona{" + "genero=" + genero + ", personas=" +Persona.CantPersonas + ", PersonasTrabajan=" + PersonasTrabajan + ", PersonasNoTrabajan=" + PersonasNoTrabajan + '}';
+    }
+    
+
+  
+       
    
+    
+
     
 }

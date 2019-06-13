@@ -208,6 +208,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Femenino"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optFemeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="optMascu">
       <Properties>
@@ -216,6 +219,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Masculino"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optMascuActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="optSI">
       <Properties>
@@ -244,7 +250,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x20a1;200,000 ... +"/>
+        <Property name="text" type="java.lang.String" value="&#x20a1;200,000 ... O m&#xe1;s"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optCuartoActionPerformed"/>
@@ -266,7 +272,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x20a1;1 ............ &#x20a1;50,000"/>
+        <Property name="text" type="java.lang.String" value="Menos de &#x20a1;50,000"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optPrimeroActionPerformed"/>

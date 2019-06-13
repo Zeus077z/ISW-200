@@ -1,5 +1,4 @@
 
-import java.util.LinkedList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +12,16 @@ import java.util.LinkedList;
  */
 public class Trabajo extends Persona {
     private int horas;
-    private int rangoHoras;
+    private int rangoSalario;
 
-    public Trabajo(int horas, int rangoHoras, String genero, LinkedList<Persona> linkedlist) {
-        super(genero, linkedlist);
-        this.horas = horas;
-        this.rangoHoras = rangoHoras;
+  
+
+    public int getRangoSalario() {
+        return rangoSalario;
+    }
+
+    public void setRangoSalario(int rangoSalario) {
+        this.rangoSalario = rangoSalario;
     }
 
     public int getHoras() {
@@ -29,13 +32,12 @@ public class Trabajo extends Persona {
         this.horas = horas;
     }
 
-    public int getRangoHoras() {
-        return rangoHoras;
+    @Override
+    public String toString() {
+        String info = String.format("%s, Horas %d, Salario %d",super.toString(),horas,rangoSalario);
+        return info;
     }
-
-    public void setRangoHoras(int rangoHoras) {
-        this.rangoHoras = rangoHoras;
-    }
+    
     
 
     
